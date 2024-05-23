@@ -24,8 +24,8 @@
         cycles: 1000,
         autolock: false,
     }).ready(function (fs, main) {
-      fs.extract("Doom2.zip").then(function () {
-        main(["-c", "DM.EXE"]).then(function (ci) {
+      fs.extract("mc.zip").then(function () {
+        main(["-c", "MinecraftInstaller.exe"]).then(function (ci) {
             window.ci = ci;
         });
       });
