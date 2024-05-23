@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>js-dos 6.22, Digger</title>
-  <script src="js-dos.js"></script>
+  <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
   <style>
     html, body, canvas, .dosbox-container {
       width: 100%;
@@ -20,12 +20,12 @@
   <canvas id="jsdos"></canvas>
   <script>
     Dos(document.getElementById("jsdos"), {
-        wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",  // Ensure this path is correct and wdosbox.js is in the same folder
+        wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
         cycles: 1000,
         autolock: false,
     }).ready(function (fs, main) {
-      fs.extract("Doom2.zip").then(function () {
-        main(["-c", "DM.EXE"]).then(function (ci) {
+      fs.extract("https://js-dos.com/6.22/current/test/digger.zip").then(function () {
+        main(["-c", "DIGGER.COM"]).then(function (ci) {
             window.ci = ci;
         });
       });
