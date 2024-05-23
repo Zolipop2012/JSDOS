@@ -1,34 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>js-dos digger 8.xx</title>
-
-    <style>
-        html, body {
-            height: 100%;
-        }
-
-        #dos {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
-    <!-- js-dos style sheet -->
-    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
-
-    <!-- js-dos -->
-    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+  <meta charset="utf-8">
+  <title>js-dos 6.22, Digger</title>
+  <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+  <style>
+    html,
+    body,
+    canvas,
+    .dosbox-container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
 </head>
+
 <body>
+  <canvas id="jsdos"></canvas>
+  <script>
+    // Obtain the canvas element
+    const canvas = document.getElementById("jsdos");
 
-    <div id="dos" style="width: 100%; height: 100%"></div>
+    // Create the context with willReadFrequently set to true
+    const ctx = canvas.getContext('2d', {willReadFrequently: true});
 
-    <script>
-        Dos(document.getElementById("dos"), {
-            url: "https://cdn.dos.zone/original/2X/9/9ed7eb9c2c441f56656692ed4dc7ab28f58503ce.jsdos",
+    // Initialize js-dos with the canvas element
+    Dos(canvas, {
+      wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+      cycles: 10000,
+      autolock: false,
+    }).ready(function (fs, main) {
+      fs.extract("Doom2.zip").then(function () {
+        main(["-c", "Doom2.EXE"]).then(function (ci) {
+          window.ci = ci;
         });
-    </script>
+      });
+    });
+  </script>
 </body>
+
 </html>
